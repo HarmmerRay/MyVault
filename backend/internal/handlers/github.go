@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"myvault-backend/internal/models"
+	"myvault-backend/pkg/github"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,20 +16,11 @@ type GithubHandler struct {
 
 type GithubService interface {
 	GetAccessToken(code string) (string, error)
-	GetUser(accessToken string) (*GithubUser, error)
+	GetUser(accessToken string) (*github.User, error)
 }
 
-type GithubUser struct {
-	ID        int    `json:"id"`
-	Login     string `json:"login"`
-	Name      string `json:"name"`
-	Email     string `json:"email"`
-	AvatarURL string `json:"avatar_url"`
-}
-
-type UserService interface {
-	GetOrCreateGithubUser(githubID, username, email, avatar string) (*models.User, error)
-}
+// 使用pkg/github中的User类型，移除重复定义
+type GithubUser = github.User
 
 func NewGithubHandler(githubService GithubService, userService UserService) *GithubHandler {
 	return &GithubHandler{

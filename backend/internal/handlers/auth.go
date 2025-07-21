@@ -23,6 +23,7 @@ type UserService interface {
 	GetUserByID(id uint) (*models.User, error)
 	UpdateUser(id uint, req *models.UpdateUserRequest) (*models.User, error)
 	VerifyPassword(user *models.User, password string) error
+	GetOrCreateGithubUser(githubID, username, email, avatar string) (*models.User, error)
 }
 
 func NewAuthHandler(authService AuthService, userService UserService) *AuthHandler {
