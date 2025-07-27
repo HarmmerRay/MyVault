@@ -30,15 +30,15 @@ type Config struct {
 func Load() *Config {
 	return &Config{
 		DBHost:               getEnv("DB_HOST", "localhost"),
-		DBPort:               getEnv("DB_PORT", "3306"),
+		DBPort:               getEnv("DB_PORT", "3307"),
 		DBUser:               getEnv("DB_USER", "root"),
-		DBPassword:           getEnv("DB_PASSWORD", "password"),
+		DBPassword:           getEnv("DB_PASSWORD", "111111"),
 		DBName:               getEnv("DB_NAME", "myvault"),
 		RedisHost:            getEnv("REDIS_HOST", "localhost"),
 		RedisPort:            getEnv("REDIS_PORT", "6379"),
 		RedisPassword:        getEnv("REDIS_PASSWORD", ""),
 		JWTSecret:            getEnv("JWT_SECRET", "myvault-secret-key"),
-		Port:                 getEnv("PORT", "8080"),
+		Port:                 getEnv("PORT", "8081"),
 		GithubClientID:       getEnv("GITHUB_CLIENT_ID", ""),
 		GithubClientSecret:   getEnv("GITHUB_CLIENT_SECRET", ""),
 		OpenAIAPIKey:         getEnv("OPENAI_API_KEY", ""),

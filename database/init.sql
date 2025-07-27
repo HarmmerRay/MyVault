@@ -1,6 +1,11 @@
 -- 创建数据库
 CREATE DATABASE IF NOT EXISTS myvault CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- 允许 root 用户从任何地址连接
+ALTER USER 'root'@'%' IDENTIFIED BY '111111';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 USE myvault;
 
 -- 用户表

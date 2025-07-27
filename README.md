@@ -73,7 +73,7 @@ MyVault/
 
 4. **访问应用**
    - 前端：http://localhost:3000
-   - 后端API：http://localhost:8080
+   - 后端API：http://localhost:8081
 
 ### 方式二：本地开发
 
@@ -124,9 +124,9 @@ MyVault/
 ```bash
 # 数据库配置
 DB_HOST=localhost
-DB_PORT=3306
+DB_PORT=3307
 DB_USER=root
-DB_PASSWORD=password
+DB_PASSWORD=111111
 DB_NAME=myvault
 
 # Redis配置
@@ -138,7 +138,7 @@ REDIS_PASSWORD=
 JWT_SECRET=your-secret-key
 
 # 服务端口
-PORT=8080
+PORT=8081
 
 # GitHub OAuth配置
 GITHUB_CLIENT_ID=your_github_client_id

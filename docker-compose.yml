@@ -6,12 +6,12 @@ services:
     container_name: myvault-mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: myvault
       MYSQL_USER: myvault
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: 111111
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -48,15 +48,15 @@ services:
     environment:
       - DB_HOST=mysql
       - DB_PORT=3306
-      - DB_USER=myvault
-      - DB_PASSWORD=password
+      - DB_USER=root
+      - DB_PASSWORD=111111
       - DB_NAME=myvault
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - JWT_SECRET=OgR+w1KO68LHxr33vMrYef+X4EVut9OEFkqTYFpADoqdtAfFI8pgEjxzR7Lwe1nyDSHKLX/5EZHXqcC3k1DnRg==
-      - PORT=8080
+      - PORT=8081
     ports:
-      - "8080:8080"
+      - "8081:8081"
 
   frontend:
     build:
@@ -72,8 +72,8 @@ services:
       - ./frontend:/app
       - /app/node_modules
     environment:
-      - REACT_APP_API_URL=http://localhost:8080
-    command: npm run dev
+      - REACT_APP_API_URL=http://backend:8081
+    command: npm run dev -- --host 0.0.0.0
 
 volumes:
   mysql_data:
